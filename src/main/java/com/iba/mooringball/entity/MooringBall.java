@@ -20,8 +20,8 @@ public class MooringBall {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "latitude")
+    @Column(name = "latitude", nullable = false)
     private double latitude;
-    @Column(name = "longitude")
+    @Column(name = "longitude", nullable = false)
     private double longitude;
 }

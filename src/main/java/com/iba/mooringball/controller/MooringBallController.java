@@ -9,26 +9,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("mooringballs")
 public class MooringBallController {
     @Autowired
     MooringBallService service;
 
-    @GetMapping(value = "/mooringballs", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MooringBall> getMooringBalls(){
         return service.getMooringBalls();
     }
 
-    @GetMapping(value = "/mooringball/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public MooringBall getMooringBall(@PathVariable Long id){
         return service.getMooringBallById(id);
     }
 
-    @PostMapping(value = "/mooringball", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping( produces = MediaType.APPLICATION_JSON_VALUE)
     public MooringBall addMooringBall(@RequestBody MooringBall ball){
         return service.addMooringBall(ball);
     }
 
-    @PutMapping(value = "/mooringball/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public MooringBall updateMooringBall(@RequestBody MooringBall ball, @PathVariable Long id){
         if(id.equals(ball.getId())){
             return service.updateMooringBall(ball);
@@ -38,7 +39,7 @@ public class MooringBallController {
         }
     }
 
-    @DeleteMapping(value = "/mooringball/{id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteBooringBallById(@PathVariable Long id){
         service.deleteMooringBall(id);
     }
