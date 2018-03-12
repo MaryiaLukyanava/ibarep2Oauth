@@ -1,10 +1,10 @@
 package com.iba.mooringball.repository;
 
-import com.iba.mooringball.entity.MooringBall;
+import com.iba.mooringball.domain.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MooringBallRepository extends JpaRepository<MooringBall,Long> {
-    void deleteById(Long id);
+public interface RoleRepository extends JpaRepository<Role,Long> {
 }
