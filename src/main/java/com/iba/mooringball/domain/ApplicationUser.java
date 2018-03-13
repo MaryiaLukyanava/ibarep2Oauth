@@ -1,3 +1,4 @@
+
 package com.iba.mooringball.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "app_user")
-public class User {
+public class ApplicationUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -18,7 +19,6 @@ public class User {
     private String username;
 
     @Column(name = "password")
-    @JsonIgnore
     private String password;
 
     @Column(name = "first_name")
@@ -87,4 +87,5 @@ public class User {
         this.roles = roles;
     }
 }
+
 

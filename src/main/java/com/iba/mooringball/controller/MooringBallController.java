@@ -8,14 +8,11 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-
+//testjwtclientid:XY7kmzoNzl100@localhost:8080/oauth/token
 
 @RestController
 @RequestMapping(value = "mooringballs", produces = "application/json")
@@ -33,21 +30,19 @@ public class MooringBallController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     }
     )
-    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public List<MooringBall> getMooringBalls(){
         return service.getMooringBalls();
     }
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Search a mooring ball with an ID",response = MooringBall.class)
-    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+   // @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public MooringBall getMooringBall(@PathVariable Long id){
         return service.getMooringBallById(id);
     }
 
     @PostMapping
     @ApiOperation(value = "Add a mooring ball",response = MooringBall.class)
-    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public MooringBall addMooringBall(@RequestBody MooringBall ball){
         return service.addMooringBall(ball);
     }
@@ -55,7 +50,6 @@ public class MooringBallController {
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Update a mooring ball by ID",response = MooringBall.class)
-    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public MooringBall updateMooringBall(@RequestBody MooringBall ball, @PathVariable Long id){
        ball.setId(id);
        return service.updateMooringBall(ball);
@@ -63,7 +57,6 @@ public class MooringBallController {
 
     @DeleteMapping(value = "/{id}")
     @ApiOperation(value = "Delete a product")
-    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public void deleteBooringBallById(@PathVariable Long id){
         service.deleteMooringBall(id);
     }

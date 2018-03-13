@@ -1,6 +1,7 @@
 package com.iba.mooringball.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -37,6 +38,7 @@ public class Harbor {
     private String name;
 
     @OneToMany(mappedBy = "harbor")
+    @JsonIgnore
     private List<MooringBall> balls;
 
 
